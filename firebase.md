@@ -41,6 +41,9 @@ runApp(const MyApp());
 https://console.firebase.google.com/project/cck-test/messaging/onboarding?hl=zh-tw
 1. download google-services.json file (has a privite key)
 2. about android app config
+[iOS]
+申請APNs
+firebase 新增 ios app and upload APNs in 專案設定(tab)->雲端通訊(apple應用程式block)
 ```
 
 * flutter 程式
