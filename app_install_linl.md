@@ -13,7 +13,7 @@
   </a>
 
   <!-- App Store -->
-  <a href="https://apps.apple.com/app/idYOUR_APP_ID"
+  <a href="https://apps.apple.com/app/6755090315"
      target="_blank" rel="noopener noreferrer">
     <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
          alt="Download on the App Store"
