@@ -10,7 +10,8 @@
 當您在線上取得 TURN 伺服器後，只需要正確的 RTCConfiguration 即可讓用戶端應用程式使用。以下程式碼片段說明 RTCPeerConnection 的設定範例，其中 TURN 伺服器的電腦名稱為 my-turn-server.mycompany.com，並在 19403 連接埠上執行。設定物件也支援 username 和 credential 屬性，可確保對伺服器的存取權。連線至 TURN 伺服器時，必須使用這些值。
 ```
 const iceConfiguration = {
-    iceServers: [
+    iceServers: [        
+        //{"url": "stun:stun.l.google.com:19302"},
         {
             urls: 'turn:my-turn-server.mycompany.com:19403',
             username: 'optional-username',
@@ -60,8 +61,6 @@ m=video 51372 RTP/AVP 99
 a=rtpmap:99 h263-1998/90000
 包含一個屬性， 將 RTP/AVP payload type 99 mapping 為 h263
 ```
-- 手機使用 4G 完全可以建立 WebRTC 連線，只是大多數情況會走 TURN relay，而非純 P2P
-
 ![WebRTC_ICE](./images/WebRTC_ICE.png)
 ![WebRTC_sdp1](./images/WebRTC_sdp1.png)
 ![WebRTC_sdp2](./images/WebRTC_sdp2.png)
@@ -69,3 +68,20 @@ a=rtpmap:99 h263-1998/90000
 ![WebRTC_sdp4](./images/WebRTC_sdp4.png)
 ![WebRTC_sdp5](./images/WebRTC_sdp5.png)
 ![WebRTC_sdp6](./images/WebRTC_sdp6.png)
+
+## WebRTC可通，但是非P2P(走TURN)
+- 手機使用 4G 完全可以建立 WebRTC 連線，只是大多數情況會走 TURN relay，而非純 P2P
+- 對稱式NAT無法直接P2P WebRTC
+![WebRTC_sdp6](./images/WebRTC_sdp7.png)
+```
+[STUN]
+先向 STUN 伺服器送 UDP 封包
+203.0.113.10:40001
+對方 A 嘗試打洞
+A → (203.0.113.10:40001) 失敗
+因為NAT已經變成 203.0.113.10:50017 → A
+
+[TURN]
+Peer A → TURN → Peer B
+Peer B → TURN → Peer A
+```

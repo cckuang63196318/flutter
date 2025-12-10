@@ -1,8 +1,12 @@
 # Firebase
 ## install firebase CLI
 ```
+用bin
 download: https://firebase.google.com/docs/cli?hl=zh-tw#windows-standalone-binary
 execute: firebase-tools-instant-win.exe
+用npm (推薦)
+npm install -g firebase-tools
+
 CLI: firebase login
 CLI: firebase projects:list
 ```

@@ -22,5 +22,17 @@
     </div>
     <h1>h1</h1>
     <h3>h3</h3>
+    <script>
+        async function test() {
+            const pc = new RTCPeerConnection();
+            console.log('RTCPeerConnection created:', pc);
+            const offer = await pc.createOffer();
+            console.log('Offer created:', offer);
+            await pc.setLocalDescription(offer);
+            console.log('Local description set:', pc.localDescription);
+        }
+        test();
+
+    </script>
 </body>
 </html>
