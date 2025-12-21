@@ -19,7 +19,7 @@ dart pub global activate flutterfire_cli
 ## 使用firebase
 ```
 1. cd to flutter project directory
-2. 執行 flutterfire configure (會在firebase建立專案. 產生 lib/firebase_options.dart. 相關birebase gradle安裝)
+2. 執行 flutterfire configure (先在firebase新增專案。會在firebase建立專案. 產生 lib/firebase_options.dart. 相關birebase gradle安裝)
 3. flutter pub add firebase_core
 4. flutterfire configure
 ```
@@ -39,6 +39,8 @@ runApp(const MyApp());
 ## 相關firebase plugin
 
 ### Cloud Message
+請注意，您不一定要透過 Google Play 商店部署 Android 應用程式。
+警告： 在 iOS SDK 10.4.0 以上版本中，必須先取得 APNs 權杖，才能發出 API 請求。在發出 FCM外掛程式 API 要求之前，無法保證已收到 APNs 權杖。
 * firebase 設定 project
 ```
 [Android]
