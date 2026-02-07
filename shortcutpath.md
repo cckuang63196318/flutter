@@ -33,17 +33,21 @@ void initSiriListener(BuildContext context) {
 
 ## Android
 ```
-1. AndroidManifest.xml > <intent-filter> (預設有google assistant喚醒)
+1. AndroidManifest.xml > <intent-filter> (預設有google assistant喚醒) &&  android:resource="@xml/actions" /
 2. android/app/src/main/res/values/strings.xml > <string name="app_name">小創</string>
-3. Ok Google，開啟小創，新增訂單:
-<intent-filter>
-    <action android:name="android.intent.action.VIEW"/>
-    <category android:name="android.intent.category.DEFAULT"/>
-    <category android:name="android.intent.category.BROWSABLE"/>
+3. Ok Google，開啟小創，新增訂單 > android/app/src/main/res/xml/actions.xml
+<action intentName="actions.intent.CREATE_ORDER">
+    <parameter name="customer" type="text" />
+    <parameter name="amount" type="number" />
 
-    <data android:scheme="xiaochuang"
-          android:host="add"/>
-</intent-filter>
+    <fulfillment>
+        <intent
+            action="android.intent.action.VIEW"
+            targetPackage="your.package.name"
+            targetClass="your.package.name.MainActivity">
+        </intent>
+    </fulfillment>
+</action>
 4. res/xml/shortcuts.xml:
 <shortcuts>
     <shortcut
@@ -71,3 +75,11 @@ MethodChannel('assistant_channel')
     }
   });
 ```
+
+## Android, iOS 差異
+|            | Google Assistant | Siri  |
+| ---------- | ---------------- | ----- |
+| 喚醒 App     | ✅ 穩定             | ❌ 不保證 |
+| 中文解析       | 👍 很強            | 👍    |
+| 不加捷徑       | ✅ 可以             | ❌ 不行  |
+| Flutter 整合 | 😄 簡單            | 😅 較複 |
